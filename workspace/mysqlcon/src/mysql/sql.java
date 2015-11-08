@@ -7,7 +7,7 @@ public class sql {
 	public static void main(String[] args) {
 		
 		con.conectar();
-		/*Genero g=new Genero("nomeg");
+		/*Genero g=new Genero("nomeg2");
 		if(Genero.inserirGenero(g)!=0) {
 			System.out.println("Pessoa inserida com sucesso no banco!");
 		} else {
@@ -27,8 +27,8 @@ public class sql {
 	System.out.println("A pesquisa n�o retornou nenhum registro!");
 	}
 	
-	Artista a=new Artista("nomeg",1);
-	/*if(Artista.inserirArtista(a)!=0) {
+	/*Artista a=new Artista("nomea2",2);
+	if(Artista.inserirArtista(a)!=0) {
 		System.out.println("Pessoa inserida com sucesso no banco!");
 	} else {
 		System.out.println("Erro na inser��o!");
@@ -46,8 +46,8 @@ public class sql {
 		System.out.println("A pesquisa n�o retornou nenhum registro!");
 	}
 	
-	Album g=new Album("nomeg",2000,1);
-	/*if(Album.inserirAlbum(g)!=0) {
+	/*Album g1=new Album("nomeal2",2000,2);
+	if(Album.inserirAlbum(g1)!=0) {
 		System.out.println("Pessoa inserida com sucesso no banco!");
 	} else {
 		System.out.println("Erro na inser��o!");
@@ -65,8 +65,8 @@ public class sql {
 		System.out.println("A pesquisa n�o retornou nenhum registro!");
 	}
 	
-	Musica m=new Musica("nomem",6,120,1);
-	/*if(Musica.inserirMusica(m)!=0) {
+	/*Musica m=new Musica("nomem2",6,120,2);
+	if(Musica.inserirMusica(m)!=0) {
 		System.out.println("Pessoa inserida com sucesso no banco!");
 	} else {
 		System.out.println("Erro na inser��o!");
@@ -83,7 +83,20 @@ public class sql {
 	}else{
 		System.out.println("A pesquisa n�o retornou nenhum registro!");
 	}
-
+	
+	
+	ResultSet res4 = con.relatorio();
+	if(res4!=null) {
+		try {
+			while(res4.next()) {
+				System.out.println("\nNome do Artista: "+res4.getString("nome_artista")+"\nNome do Genero: "+res4.getString("nome_genero")+"\nNome do Album: "+res4.getString("nome_album")+"\nAno da Musica: "+res4.getInt("ano")+"\nNome do Musica: "+res4.getString("nome_musica"));
+			} 
+			}catch (SQLException e) {
+		System.out.println("Problema para exibir registros!");
+			}
+		}else{
+			System.out.println("A pesquisa n�o retornou nenhum registro!");
+		}
 	}
 }
 	

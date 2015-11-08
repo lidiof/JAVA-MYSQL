@@ -1,5 +1,6 @@
 package mysql;
-import mysql.sql;
+
+//import mysql.sql;
 import java.sql.*;
 
 public class con {
@@ -21,7 +22,7 @@ public class con {
 		Statement st;
 		try {
 			st = cone.createStatement();
-			return(st.executeQuery("SELECT * FROM genero_musical;"));
+			return(st.executeQuery("select artista.nome as nome_artista,genero.nome as nome_genero,album.nome as nome_album,album.ano,musica.nome as nome_musica from artista,genero,album,musica where genero.id=artista.genero_id && artista.id=album.artista_id && album.id=musica.album_id order by album.id;"));
 		} catch (SQLException e) {
 			System.out.println("Problema na consulta � tabela pessoa!");
 		}
